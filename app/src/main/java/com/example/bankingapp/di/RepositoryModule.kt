@@ -1,8 +1,12 @@
 package com.example.bankingapp.di
 
+import com.example.bankingapp.data.remote.service.StoriesApiService
 import com.example.bankingapp.data.remote.util.HandleAuth
+import com.example.bankingapp.data.remote.util.HandleResponse
 import com.example.bankingapp.data.repository.remote.FirebaseAuthenticationRepositoryImpl
+import com.example.bankingapp.data.repository.remote.StoriesRepositoryImpl
 import com.example.bankingapp.domain.repository.IFirebaseAuthenticationRepository
+import com.example.bankingapp.domain.repository.StoriesRepository
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
@@ -26,4 +30,20 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun provideHandleAuth(): HandleAuth = HandleAuth()
+
+    @Provides
+    @Singleton
+    fun provideHandleResponse(): HandleResponse {
+        return HandleResponse()
+    }
+
+    @Provides
+    @Singleton
+    fun provideStoriesRepository(
+        service: StoriesApiService,
+        handler: HandleResponse
+    ): StoriesRepository {
+        return StoriesRepositoryImpl(service, handler)
+    }
+
 }
