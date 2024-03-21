@@ -14,18 +14,14 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBinding::inflate) {
     private val viewModel: WelcomeViewModel by viewModels()
-    override fun setUp() {
 
-    }
 
-    override fun listeners() {
-        binding.apply {
-            btnRegister.setOnClickListener {
-                findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToRegisterFragment())
-            }
-            btnLogin.setOnClickListener {
-                findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToLogInFragment())
-            }
+    override fun listeners() = with(binding) {
+        btnRegister.setOnClickListener {
+            findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToRegisterFragment())
+        }
+        btnLogin.setOnClickListener {
+            findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToLogInFragment())
         }
     }
 
