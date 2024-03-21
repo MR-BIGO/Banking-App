@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.bankingapp.presentation.screen.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/financialManagerFragment"
+        android:name="com.example.bankingapp.presentation.screen.financial_manager.FinancialManagerFragment"
+        android:label="fragment_financial_manager"
+        tools:layout="@layout/fragment_financial_manager" />
+    <fragment
+        android:id="@+id/transactionsFragment"
+        android:name="com.example.bankingapp.presentation.screen.transactions.TransactionsFragment"
+        android:label="fragment_transactions"
+        tools:layout="@layout/fragment_transactions" />
+</navigation>

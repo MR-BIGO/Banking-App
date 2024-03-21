@@ -22,6 +22,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField(
+                "String",
+                "API_URL",
+                "\"https://run.mocky.io/v3/\""
+            )
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -36,6 +43,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
     }
 }
 
