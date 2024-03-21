@@ -24,4 +24,5 @@
     <string name="financial_manager_fragment">Financial Manager Fragment</string>
     <string name="financial_manager">financial Manager</string>
     <string name="transactions">Transactions</string>
+    <string name="no_account">Don\'t have an account yet? <u>Click here!</u></string>
 </resources>

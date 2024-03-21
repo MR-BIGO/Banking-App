@@ -35,7 +35,7 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflater<VB>)
         _binding = null
     }
 
-    abstract fun setUp()
+    open fun setUp(){}
     open fun listeners(){}
-    abstract fun observers()
+    open fun observers(){}
 }
