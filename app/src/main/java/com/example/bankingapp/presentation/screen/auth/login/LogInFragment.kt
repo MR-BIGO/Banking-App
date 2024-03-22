@@ -27,6 +27,10 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
             findNavController().popBackStack()
         }
 
+        tvNoAccount.setOnClickListener {
+            findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToRegisterFragment())
+        }
+
         signInButton.setOnClickListener {
             viewModel.onEvent(
                 LoginEvents.LoginPressed(
