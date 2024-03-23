@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.bankingapp.presentation.screen.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_newCardFragment"
+            app:destination="@id/newCardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/financialManagerFragment"
         android:name="com.example.bankingapp.presentation.screen.financial_manager.FinancialManagerFragment"
@@ -20,4 +24,9 @@
         android:name="com.example.bankingapp.presentation.screen.transactions.TransactionsFragment"
         android:label="fragment_transactions"
         tools:layout="@layout/fragment_transactions" />
+    <fragment
+        android:id="@+id/newCardFragment"
+        android:name="com.example.bankingapp.presentation.screen.new_card.NewCardFragment"
+        android:label="fragment_new_card"
+        tools:layout="@layout/fragment_new_card" />
 </navigation>

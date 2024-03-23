@@ -30,4 +30,12 @@
     <string name="transfer_to_own_account">Transfer to own account</string>
     <string name="transfer_to_someone_else">Transfer to someone else</string>
     <string name="exchange">Exchange</string>
+    <string name="total_available_amount">Total Available Amount</string>
+    <string name="add_new_card">+ Add new card</string>
+    <string name="total_card_amount">Total card amount</string>
+    <string name="card_number">Card Number</string>
+    <string name="cvc">CVC</string>
+    <string name="expiration_date">Expiration Date</string>
+    <string name="enter_card_details">Enter Card Details</string>
+    <string name="add_card">Add Card</string>
 </resources>

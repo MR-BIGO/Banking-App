@@ -5,6 +5,6 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 interface StoriesApiService {
-    @GET("e032b8b5-da80-4e4c-8dd2-a1cf8b8ffb2a")
+    @GET("4463a264-ed92-48a4-8ac1-57cf79ad1807")
     suspend fun getStories(): Response<List<StoryDto>>
 }

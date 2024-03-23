@@ -1,9 +1,9 @@
 package com.example.bankingapp.data.remote.mapper
 
 import com.example.bankingapp.data.remote.model.UserDto
-import com.example.bankingapp.domain.model.User
+import com.example.bankingapp.domain.model.UserDomain
 
-fun User.toDto(): UserDto {
+fun UserDomain.toDto(): UserDto {
     return UserDto(
         email = email,
         password = password
