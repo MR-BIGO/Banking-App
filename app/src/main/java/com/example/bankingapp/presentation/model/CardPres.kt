@@ -9,5 +9,6 @@ data class CardPres(
     val validDate: String,
     val amountGEL: Double,
     val amountUSD: Double,
-    val amountEUR: Double
+    val amountEUR: Double,
+    val totalAmount: Double = 0.0
 )

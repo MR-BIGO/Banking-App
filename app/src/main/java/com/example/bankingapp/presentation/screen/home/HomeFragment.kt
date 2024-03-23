@@ -39,21 +39,32 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         btnAddCard.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToNewCardFragment())
         }
+        cardsRecyclerAdapter.itemOnClick = {
+            viewModel.onEvent(HomeFragmentEvents.CardPressed(it))
+        }
     }
 
     override fun observers() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.homeState.collect {
-                    handleState(it)
+                launch {
+                    viewModel.homeState.collect {
+                        handleState(it)
+                    }
+                }
+                launch {
+                    viewModel.uiEvent.collect {
+                        handleEvent(it)
+                    }
                 }
             }
         }
     }
 
-    private fun setUpCards(){
+    private fun setUpCards() {
         binding.recyclerCards.apply {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = cardsRecyclerAdapter
         }
     }
@@ -73,6 +84,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             }
 
             binding.progressBar.visibility = if (state.loading) View.VISIBLE else View.GONE
+        }
+    }
+
+    private fun navigateToDetails(id: String) {
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToCardDetailsFragment(id)
+        )
+    }
+
+    private fun handleEvent(event: HomeViewModel.HomeNavigationEvents) {
+        when (event) {
+            is HomeViewModel.HomeNavigationEvents.NavigateToDetails -> {
+                navigateToDetails(event.id)
+            }
         }
     }
 }

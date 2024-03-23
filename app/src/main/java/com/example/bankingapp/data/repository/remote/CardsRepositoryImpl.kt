@@ -49,6 +49,34 @@ class CardsRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getCardById(id: String): Flow<Resource<CardDomain>> {
+        return flow {
+            emit(Resource.Loading(true))
+            try {
+                var cardById: CardDomain? = null
+                val dataSnapshot: DataSnapshot = withContext(Dispatchers.IO) {
+                    database.child(id).get().await()
+                }
+                for (i in dataSnapshot.children) {
+                    val cardDtoData = CardDto(
+                        i.getValue(CardDto::class.java)!!.amountEUR,
+                        i.getValue(CardDto::class.java)!!.amountGEL,
+                        i.getValue(CardDto::class.java)!!.amountUSD,
+                        i.getValue(CardDto::class.java)!!.cardNum,
+                        i.getValue(CardDto::class.java)!!.cvv,
+                        i.getValue(CardDto::class.java)!!.id,
+                        i.getValue(CardDto::class.java)!!.validDate,
+                    )
+                    cardById = cardDtoData.toDomain()
+                }
+                emit(Resource.Success(cardById!!))
+            }catch (e: Throwable){
+                emit(Resource.Error(e.message ?: ""))
+            }
+            emit(Resource.Loading(false))
+        }
+    }
+
     override suspend fun saveCard(card: CardDomain): Flow<Resource<String>> {
         return flow {
             emit(Resource.Loading(true))

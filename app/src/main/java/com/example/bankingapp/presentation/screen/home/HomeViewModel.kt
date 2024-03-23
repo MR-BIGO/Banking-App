@@ -9,8 +9,8 @@ import com.example.bankingapp.presentation.event.HomeFragmentEvents
 import com.example.bankingapp.presentation.mapper.toPres
 import com.example.bankingapp.presentation.mapper.toPresentation
 import com.example.bankingapp.presentation.state.HomeState
-import com.example.bankingapp.presentation.state.authentication.AuthenticationState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -28,6 +28,9 @@ class HomeViewModel @Inject constructor(
     private val _homeState = MutableStateFlow(HomeState())
     val homeState: SharedFlow<HomeState> = _homeState.asStateFlow()
 
+    private val _uiEvent = MutableSharedFlow<HomeNavigationEvents>()
+    val uiEvent: SharedFlow<HomeNavigationEvents> get() = _uiEvent
+
     fun onEvent(event: HomeFragmentEvents) {
         when (event) {
             is HomeFragmentEvents.ResetError -> setError(null)
@@ -38,6 +41,10 @@ class HomeViewModel @Inject constructor(
 
             is HomeFragmentEvents.GetCards -> {
                 getCards()
+            }
+
+            is HomeFragmentEvents.CardPressed -> {
+                handleCardPress(event.id)
             }
 
         }
@@ -89,5 +96,15 @@ class HomeViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    private fun handleCardPress(id: String){
+        viewModelScope.launch {
+            _uiEvent.emit(HomeNavigationEvents.NavigateToDetails(id))
+        }
+    }
+
+    sealed class HomeNavigationEvents{
+        data class NavigateToDetails(val id: String): HomeNavigationEvents()
     }
 }

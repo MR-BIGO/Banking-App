@@ -20,10 +20,6 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
     private val viewModel: RegisterFragmentViewModel by viewModels()
 
     override fun listeners() = with(binding) {
-        btnBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
-
         signUpButton.setOnClickListener {
             viewModel.onEvent(
                 RegisterEvents.RegisterPressed(

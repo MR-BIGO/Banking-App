@@ -23,10 +23,6 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
     }
 
     override fun listeners() = with(binding) {
-        btnBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
-
         tvNoAccount.setOnClickListener {
             findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToRegisterFragment())
         }
