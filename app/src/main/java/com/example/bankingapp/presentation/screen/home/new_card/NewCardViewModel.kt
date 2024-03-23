@@ -1,4 +1,4 @@
-package com.example.bankingapp.presentation.screen.new_card
+package com.example.bankingapp.presentation.screen.home.new_card
 
 import android.text.Editable
 import androidx.lifecycle.ViewModel

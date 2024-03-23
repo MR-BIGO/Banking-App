@@ -18,18 +18,28 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
         bottomNavigationView.setupWithNavController(navController)
 
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.newCardFragment) {
-                binding.bottomNavigationView.visibility = View.GONE
-            } else if (destination.id == R.id.paymentFragment) {
-                binding.bottomNavigationView.visibility = View.GONE
-            } else if (destination.id == R.id.transferToOwnAccFragment) {
-                binding.bottomNavigationView.visibility = View.GONE
-            } else if (destination.id == R.id.transferToSomeoneElseFragment) {
-                binding.bottomNavigationView.visibility = View.GONE
-            } else if (destination.id == R.id.exchangeFragment) {
-                binding.bottomNavigationView.visibility = View.GONE
-            } else {
-                binding.bottomNavigationView.visibility = View.VISIBLE
+            when (destination.id) {
+                R.id.newCardFragment -> {
+                    binding.bottomNavigationView.visibility = View.GONE
+                }
+                R.id.paymentFragment -> {
+                    binding.bottomNavigationView.visibility = View.GONE
+                }
+                R.id.transferToOwnAccFragment -> {
+                    binding.bottomNavigationView.visibility = View.GONE
+                }
+                R.id.transferToSomeoneElseFragment -> {
+                    binding.bottomNavigationView.visibility = View.GONE
+                }
+                R.id.exchangeFragment -> {
+                    binding.bottomNavigationView.visibility = View.GONE
+                }
+                R.id.cardDetailsFragment -> {
+                    binding.bottomNavigationView.visibility = View.GONE
+                }
+                else -> {
+                    binding.bottomNavigationView.visibility = View.VISIBLE
+                }
             }
         }
     }
