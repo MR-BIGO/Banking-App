@@ -7,4 +7,5 @@ sealed class NewCardEvents {
     data class CardDateChanged(val date: Editable): NewCardEvents()
     data class CardCvvChanged(val cvv: Editable): NewCardEvents()
     data class AddCard(val cardNum: String, val cardDate: String, val cardCvv: String): NewCardEvents()
+    data object ResetError: NewCardEvents()
 }
