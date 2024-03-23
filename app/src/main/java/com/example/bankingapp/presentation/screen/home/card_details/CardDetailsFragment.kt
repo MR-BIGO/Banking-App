@@ -1,6 +1,5 @@
 package com.example.bankingapp.presentation.screen.home.card_details
 
-import androidx.fragment.app.Fragment
 import com.example.bankingapp.databinding.FragmentCardDetailsBinding
 import com.example.bankingapp.presentation.base.BaseFragment
 
