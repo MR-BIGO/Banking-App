@@ -6,5 +6,4 @@ data class CardDetailsState (
     val card: CardPres? = null,
     val error: String? = null,
     val loading: Boolean = false
-
 )

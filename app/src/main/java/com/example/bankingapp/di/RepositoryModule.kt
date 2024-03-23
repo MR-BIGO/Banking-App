@@ -1,11 +1,14 @@
 package com.example.bankingapp.di
 
+import com.example.bankingapp.data.remote.service.PaymentApiService
 import com.example.bankingapp.data.remote.service.StoriesApiService
 import com.example.bankingapp.data.remote.util.HandleAuth
 import com.example.bankingapp.data.remote.util.HandleResponse
 import com.example.bankingapp.data.repository.remote.CardsRepositoryImpl
 import com.example.bankingapp.data.repository.remote.FirebaseAuthenticationRepositoryImpl
+import com.example.bankingapp.data.repository.remote.GetPaymentRepositoryImpl
 import com.example.bankingapp.data.repository.remote.StoriesRepositoryImpl
+import com.example.bankingapp.domain.repository.GetPaymentRepository
 import com.example.bankingapp.domain.repository.ICardsRepository
 import com.example.bankingapp.domain.repository.IFirebaseAuthenticationRepository
 import com.example.bankingapp.domain.repository.StoriesRepository
@@ -34,6 +37,12 @@ object RepositoryModule {
     @Provides
     fun provideCardsRepository(firebaseDb: DatabaseReference, firebaseAuth: FirebaseAuth): ICardsRepository{
         return CardsRepositoryImpl(firebaseDb, firebaseAuth)
+    }
+
+    @Singleton
+    @Provides
+    fun providePaymentRepository(service: PaymentApiService, handler: HandleResponse): GetPaymentRepository{
+        return GetPaymentRepositoryImpl(service,handler)
     }
 
     @Singleton
