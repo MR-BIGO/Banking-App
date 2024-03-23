@@ -42,4 +42,7 @@
     <string name="payment_fragment">Payment fragment</string>
     <string name="to_own_acc">To Own ACC</string>
     <string name="to_someone_else">To Someone Else</string>
+    <string name="symbol_gel">\u20BE</string>
+    <string name="symbol_usd">\u0024</string>
+    <string name="symbol_eur">\u20AC</string>
 </resources>

@@ -1,24 +1,52 @@
 package com.example.bankingapp.data.repository.remote
 
 import com.example.bankingapp.data.common.Resource
+import com.example.bankingapp.data.remote.mapper.toDomain
+import com.example.bankingapp.data.remote.model.CardDto
 import com.example.bankingapp.domain.model.CardDomain
 import com.example.bankingapp.domain.repository.ICardsRepository
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class CardsRepositoryImpl @Inject constructor(
-    private val firebaseDb: DatabaseReference,
-    private val firebaseAuth: FirebaseAuth
+    firebaseDb: DatabaseReference,
+    firebaseAuth: FirebaseAuth
 ) : ICardsRepository {
-    val uid = firebaseAuth.currentUser?.uid
-    val database = firebaseDb.child(uid!!).child("Cards")
+    private val uid = firebaseAuth.currentUser?.uid
+    private val database = firebaseDb.child(uid!!).child("Cards")
     override suspend fun getCards(): Flow<Resource<List<CardDomain>>> {
         return flow {
-
+            emit(Resource.Loading(true))
+            try {
+                val dataList: MutableList<CardDomain> = mutableListOf()
+                val dataSnapshot: DataSnapshot = withContext(Dispatchers.IO) {
+                    database.get().await()
+                }
+                for (i in dataSnapshot.children) {
+                    val cardDtoData = CardDto(
+                        i.getValue(CardDto::class.java)!!.amountEUR,
+                        i.getValue(CardDto::class.java)!!.amountGEL,
+                        i.getValue(CardDto::class.java)!!.amountUSD,
+                        i.getValue(CardDto::class.java)!!.cardNum,
+                        i.getValue(CardDto::class.java)!!.cvv,
+                        i.getValue(CardDto::class.java)!!.id,
+                        i.getValue(CardDto::class.java)!!.validDate,
+                    )
+                    dataList.add(cardDtoData.toDomain())
+                }
+                emit(Resource.Success(dataList))
+            } catch (e: Throwable) {
+                emit(Resource.Error(e.message ?: ""))
+            }
+            emit(Resource.Loading(false))
         }
     }
 
