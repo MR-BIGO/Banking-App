@@ -1,4 +1,4 @@
-package com.example.bankingapp.presentation.screen.new_card
+package com.example.bankingapp.presentation.screen.home.new_card
 
 import android.util.Log.d
 import android.view.View
