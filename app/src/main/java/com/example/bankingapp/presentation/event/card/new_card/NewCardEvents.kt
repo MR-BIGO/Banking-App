@@ -1,4 +1,4 @@
-package com.example.bankingapp.presentation.event
+package com.example.bankingapp.presentation.event.card.new_card
 
 import android.text.Editable
 

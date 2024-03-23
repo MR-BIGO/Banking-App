@@ -10,7 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.bankingapp.databinding.FragmentNewCardBinding
 import com.example.bankingapp.presentation.base.BaseFragment
-import com.example.bankingapp.presentation.event.NewCardEvents
+import com.example.bankingapp.presentation.event.card.new_card.NewCardEvents
 import com.example.bankingapp.presentation.state.NewCardState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

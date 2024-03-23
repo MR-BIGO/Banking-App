@@ -8,7 +8,7 @@ import com.example.bankingapp.domain.use_case.card_oriented.SaveCardUseCase
 import com.example.bankingapp.domain.use_case.formatter.FormatCardCvvUseCase
 import com.example.bankingapp.domain.use_case.formatter.FormatCardDateUseCase
 import com.example.bankingapp.domain.use_case.formatter.FormatCardNumberUseCase
-import com.example.bankingapp.presentation.event.NewCardEvents
+import com.example.bankingapp.presentation.event.card.new_card.NewCardEvents
 import com.example.bankingapp.presentation.mapper.toDomain
 import com.example.bankingapp.presentation.model.CardPres
 import com.example.bankingapp.presentation.state.NewCardState
