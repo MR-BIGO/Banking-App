@@ -1,5 +1,6 @@
 package com.example.bankingapp.presentation.screen.home.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,10 +8,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bankingapp.databinding.StoryRecyclerItemBinding
 import com.example.bankingapp.presentation.extensions.loadImage
-import com.example.bankingapp.presentation.model.StoryUiModel
+import com.example.bankingapp.presentation.model.StoryPres
 
 
-class StoriesRecyclerViewAdapter: ListAdapter<StoryUiModel, StoriesRecyclerViewAdapter.StoriesViewHolder>(StoryDiffCallback) {
+class StoriesRecyclerViewAdapter: ListAdapter<StoryPres, StoriesRecyclerViewAdapter.StoriesViewHolder>(StoryDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoriesViewHolder {
         return StoriesViewHolder(StoryRecyclerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -27,18 +28,19 @@ class StoriesRecyclerViewAdapter: ListAdapter<StoryUiModel, StoriesRecyclerViewA
             with(binding) {
                 shapeableImageViewCover.loadImage(story.picture)
                 tvTitle.text = story.title
+                tvTitle.setTextColor(Color.parseColor("#".plus(story.color)))
             }
         }
     }
 
     companion object {
-        private val StoryDiffCallback = object : DiffUtil.ItemCallback<StoryUiModel>() {
+        private val StoryDiffCallback = object : DiffUtil.ItemCallback<StoryPres>() {
 
-            override fun areItemsTheSame(oldItem: StoryUiModel, newItem: StoryUiModel): Boolean {
+            override fun areItemsTheSame(oldItem: StoryPres, newItem: StoryPres): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: StoryUiModel, newItem: StoryUiModel): Boolean {
+            override fun areContentsTheSame(oldItem: StoryPres, newItem: StoryPres): Boolean {
                 return oldItem == newItem
             }
         }

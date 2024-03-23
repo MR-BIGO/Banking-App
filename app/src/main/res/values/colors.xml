@@ -8,4 +8,9 @@
     <color name="gray">#616667</color>
     <color name="cream">#938E74</color>
     <color name="DarkGrey">#181a20</color>
+    <color name="currency_back_grey">#141414</color>
+    <color name="currency_back_outline">#1c1c1c</color>
+    <color name="currency_secondary_white">#8a8a8a</color>
+    <color name="currency_primary_white">#dadada</color>
+    <color name="currency_total_white">#e6e6e6</color>
 </resources>

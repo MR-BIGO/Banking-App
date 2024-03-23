@@ -1,10 +1,10 @@
 package com.example.bankingapp.presentation.mapper
 
-import com.example.bankingapp.domain.model.User
+import com.example.bankingapp.domain.model.UserDomain
 import com.example.bankingapp.presentation.model.UserPres
 
-fun UserPres.toDomain(): User {
-    return User(
+fun UserPres.toDomain(): UserDomain {
+    return UserDomain(
         email = email,
         password = password
     )

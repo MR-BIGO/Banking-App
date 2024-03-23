@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bankingapp.databinding.FragmentHomeBinding
@@ -29,6 +30,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         viewModel.onEvent(HomeFragmentEvents.GetStories)
     }
 
+    override fun listeners() = with(binding) {
+        btnAddCard.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToNewCardFragment())
+        }
+    }
+
     override fun observers() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -41,8 +48,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun handleState(state: HomeState) {
         with(state) {
-
-
             stories?.let {
                 storiesRecyclerAdapter.submitList(it)
             }
