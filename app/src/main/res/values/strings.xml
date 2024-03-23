@@ -38,4 +38,8 @@
     <string name="expiration_date">Expiration Date</string>
     <string name="enter_card_details">Enter Card Details</string>
     <string name="add_card">Add Card</string>
+    <string name="exchange_fragment">Exchange Fragment</string>
+    <string name="payment_fragment">Payment fragment</string>
+    <string name="to_own_acc">To Own ACC</string>
+    <string name="to_someone_else">To Someone Else</string>
 </resources>

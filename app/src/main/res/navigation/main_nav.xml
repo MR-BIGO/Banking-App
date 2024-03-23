@@ -23,10 +23,43 @@
         android:id="@+id/transactionsFragment"
         android:name="com.example.bankingapp.presentation.screen.transactions.TransactionsFragment"
         android:label="fragment_transactions"
-        tools:layout="@layout/fragment_transactions" />
+        tools:layout="@layout/fragment_transactions" >
+        <action
+            android:id="@+id/action_transactionsFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+        <action
+            android:id="@+id/action_transactionsFragment_to_transferToOwnAccFragment"
+            app:destination="@id/transferToOwnAccFragment" />
+        <action
+            android:id="@+id/action_transactionsFragment_to_transferToSomeoneElseFragment"
+            app:destination="@id/transferToSomeoneElseFragment" />
+        <action
+            android:id="@+id/action_transactionsFragment_to_exchangeFragment"
+            app:destination="@id/exchangeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newCardFragment"
         android:name="com.example.bankingapp.presentation.screen.new_card.NewCardFragment"
         android:label="fragment_new_card"
         tools:layout="@layout/fragment_new_card" />
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.bankingapp.presentation.screen.transactions.payment.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" />
+    <fragment
+        android:id="@+id/transferToOwnAccFragment"
+        android:name="com.example.bankingapp.presentation.screen.transactions.to_own_acc.TransferToOwnAccFragment"
+        android:label="fragment_transfer_to_own_acc"
+        tools:layout="@layout/fragment_transfer_to_own_acc" />
+    <fragment
+        android:id="@+id/transferToSomeoneElseFragment"
+        android:name="com.example.bankingapp.presentation.screen.transactions.to_someone_else.TransferToSomeoneElseFragment"
+        android:label="fragment_transfer_to_someone_else"
+        tools:layout="@layout/fragment_transfer_to_someone_else" />
+    <fragment
+        android:id="@+id/exchangeFragment"
+        android:name="com.example.bankingapp.presentation.screen.transactions.exchange.ExchangeFragment"
+        android:label="fragment_exchange"
+        tools:layout="@layout/fragment_exchange" />
 </navigation>
