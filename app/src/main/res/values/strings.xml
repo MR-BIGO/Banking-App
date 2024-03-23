@@ -26,4 +26,8 @@
     <string name="transactions">Transactions</string>
     <string name="no_account">Don\'t have an account yet? <u>Click here!</u></string>
     <string name="already_account">Already have an account? Click here!</string>
+    <string name="payment">Payment</string>
+    <string name="transfer_to_own_account">Transfer to own account</string>
+    <string name="transfer_to_someone_else">Transfer to someone else</string>
+    <string name="exchange">Exchange</string>
 </resources>

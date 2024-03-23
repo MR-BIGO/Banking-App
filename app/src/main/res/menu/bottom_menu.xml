@@ -7,10 +7,10 @@
         android:title="@string/home" />
     <item
         android:id="@+id/transactionsFragment"
-        android:icon="@drawable/ic_star"
+        android:icon="@drawable/ic_exchange"
         android:title="@string/transactions" />
     <item
         android:id="@+id/financialManagerFragment"
-        android:icon="@drawable/ic_person_settings"
+        android:icon="@drawable/ic_statistics"
         android:title="@string/financial_manager" />
 </menu>
