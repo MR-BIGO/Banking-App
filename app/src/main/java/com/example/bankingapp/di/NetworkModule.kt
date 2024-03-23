@@ -1,8 +1,8 @@
 package com.example.bankingapp.di
 
 import com.example.bankingapp.BuildConfig
+import com.example.bankingapp.data.remote.service.PaymentApiService
 import com.example.bankingapp.data.remote.service.StoriesApiService
-import com.google.firebase.auth.FirebaseAuth
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -54,5 +54,10 @@ object NetworkModule {
     @Provides
     fun provideGetArtistsService(retrofit: Retrofit): StoriesApiService {
         return retrofit.create(StoriesApiService::class.java)
+    }
+    @Singleton
+    @Provides
+    fun provideGetPaymentService(retrofit: Retrofit): PaymentApiService {
+        return retrofit.create(PaymentApiService::class.java)
     }
 }
