@@ -6,23 +6,6 @@
     app:startDestination="@id/logInFragment">
 
     <fragment
-        android:id="@+id/welcomeFragment"
-        android:name="com.example.bankingapp.presentation.screen.auth.welcome.WelcomeFragment"
-        android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" >
-        <action
-            android:id="@+id/action_welcomeFragment_to_logInFragment"
-            app:destination="@id/logInFragment" />
-        <action
-            android:id="@+id/action_welcomeFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
-        <action
-            android:id="@+id/action_welcomeFragment_to_mainFragment"
-            app:destination="@id/mainFragment"
-            app:popUpTo="@id/auth_nav"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
         android:id="@+id/logInFragment"
         android:name="com.example.bankingapp.presentation.screen.auth.login.LogInFragment"
         android:label="fragment_log_in"
@@ -55,8 +38,8 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_mainFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment"
+            android:id="@+id/action_mainFragment_to_logInFragment"
+            app:destination="@id/logInFragment"
             app:popUpTo="@id/auth_nav"
             app:popUpToInclusive="true" />
     </fragment>

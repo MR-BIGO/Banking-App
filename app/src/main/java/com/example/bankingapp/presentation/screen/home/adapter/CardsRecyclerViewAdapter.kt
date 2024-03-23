@@ -13,6 +13,8 @@ import com.example.bankingapp.presentation.model.CardPres
 class CardsRecyclerViewAdapter :
     ListAdapter<CardPres, CardsRecyclerViewAdapter.CardsViewHolder>(DiffCallback()) {
 
+    var itemOnClick: ((String) -> Unit)? = null
+
     inner class CardsViewHolder(private val binding: CardRvItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind() = with(binding) {
@@ -48,6 +50,12 @@ class CardsRecyclerViewAdapter :
                 else -> {}
             }
         }
+
+        fun listener()= with(binding){
+            root.setOnClickListener {
+                itemOnClick!!.invoke(currentList[adapterPosition].id)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardsViewHolder {
@@ -66,6 +74,7 @@ class CardsRecyclerViewAdapter :
 
     override fun onBindViewHolder(holder: CardsViewHolder, position: Int) {
         holder.bind()
+        holder.listener()
     }
 
 
