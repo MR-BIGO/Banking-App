@@ -62,6 +62,7 @@ class PaymentFragment : BaseFragment<FragmentPaymentBinding>(FragmentPaymentBind
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             Log.d("check error cards here", it)
         }
+        binding.progressBar.visibility = if (state.loading) View.VISIBLE else View.GONE
     }
 
     private fun setupPaymentRV(){
