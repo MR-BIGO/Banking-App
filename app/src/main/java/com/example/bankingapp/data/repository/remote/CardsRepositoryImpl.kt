@@ -88,9 +88,16 @@ class CardsRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun updateCard(card: CardDomain): Flow<Resource<String>> {
+    override suspend fun updateCard(card: CardDomain): Flow<Resource<Boolean>> {
         return flow {
-
+            emit(Resource.Loading(true))
+            try {
+                database.child(card.id).setValue(card)
+                emit(Resource.Success(true))
+            } catch (e: Throwable) {
+                emit(Resource.Error(e.message ?: ""))
+            }
+            emit(Resource.Loading(false))
         }
     }
 

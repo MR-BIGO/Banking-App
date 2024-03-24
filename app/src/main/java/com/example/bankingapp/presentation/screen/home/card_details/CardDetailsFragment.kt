@@ -1,7 +1,8 @@
 package com.example.bankingapp.presentation.screen.home.card_details
 
-import android.util.Log.d
+import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -74,6 +75,38 @@ class CardDetailsFragment :
                 it.amountEUR.toString().plus(" ").plus(resources.getString(R.string.symbol_eur))
             tvAmountUsd.text =
                 it.amountUSD.toString().plus(" ").plus(resources.getString(R.string.symbol_usd))
+
+            when (it.cardNum.first()) {
+                '4' -> {
+                    ivPaymentCorp.setImageDrawable(
+                        ResourcesCompat.getDrawable(
+                            root.resources,
+                            R.drawable.ic_visa,
+                            root.resources.newTheme()
+                        )
+                    )
+                }
+
+                '5' -> {
+                    ivPaymentCorp.setImageDrawable(
+                        ResourcesCompat.getDrawable(
+                            root.resources,
+                            R.drawable.ic_mastercard,
+                            root.resources.newTheme()
+                        )
+                    )
+                }
+
+                else -> {
+                    ivPaymentCorp.setImageDrawable(
+                        ResourcesCompat.getDrawable(
+                            root.resources,
+                            R.drawable.ic_paypal,
+                            root.resources.newTheme()
+                        )
+                    )
+                }
+            }
             cardNum = it.cardNum
             cvv = it.cvv
             validDate = it.validDate
@@ -81,6 +114,8 @@ class CardDetailsFragment :
         if (state.deleteSuccess) {
             findNavController().popBackStack()
         }
+
+        progressBar.visibility = if (state.loading) View.VISIBLE else View.GONE
     }
 
     private fun handleEvent(event: CardDetailsViewModel.DetailsNavigationEvent) {
@@ -91,8 +126,18 @@ class CardDetailsFragment :
 
             is CardDetailsViewModel.DetailsNavigationEvent.NavigateToTransferElse -> {}
             is CardDetailsViewModel.DetailsNavigationEvent.NavigateToTransferOwn -> {}
-            is CardDetailsViewModel.DetailsNavigationEvent.NavigateToFunds -> {}
+            is CardDetailsViewModel.DetailsNavigationEvent.NavigateToFunds -> {
+                navigateToFunds(event.id)
+            }
         }
+    }
+
+    private fun navigateToFunds(id: String) {
+        findNavController().navigate(
+            CardDetailsFragmentDirections.actionCardDetailsFragmentToAddFundsFragment(
+                id
+            )
+        )
     }
 
     private fun openDetailsBottomSheet(cardNum: String, validDate: String, cvv: String) {

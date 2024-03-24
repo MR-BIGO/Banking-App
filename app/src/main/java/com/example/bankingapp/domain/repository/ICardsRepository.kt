@@ -9,6 +9,6 @@ interface ICardsRepository {
     suspend fun getCards(): Flow<Resource<List<CardDomain>>>
     suspend fun getCardById(id: String): Flow<Resource<CardDomain>>
     suspend fun saveCard(card: CardDomain): Flow<Resource<String>>
-    suspend fun updateCard(card: CardDomain): Flow<Resource<String>>
+    suspend fun updateCard(card: CardDomain): Flow<Resource<Boolean>>
     fun deleteCard(id: String): Flow<Resource<Boolean>>
 }
