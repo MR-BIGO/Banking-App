@@ -3,7 +3,6 @@ package com.example.bankingapp.presentation.screen.transactions
 import androidx.navigation.fragment.findNavController
 import com.example.bankingapp.databinding.FragmentTransactionsBinding
 import com.example.bankingapp.presentation.base.BaseFragment
-import com.example.bankingapp.presentation.screen.home.HomeFragmentDirections
 
 
 class TransactionsFragment : BaseFragment<FragmentTransactionsBinding>(FragmentTransactionsBinding::inflate) {

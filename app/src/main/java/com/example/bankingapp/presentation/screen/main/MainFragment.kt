@@ -37,6 +37,12 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                 R.id.cardDetailsFragment -> {
                     binding.bottomNavigationView.visibility = View.GONE
                 }
+                R.id.addFundsFragment -> {
+                    binding.bottomNavigationView.visibility = View.GONE
+                }
+                R.id.cardDetailsDialogFragment -> {
+                    binding.bottomNavigationView.visibility = View.GONE
+                }
                 else -> {
                     binding.bottomNavigationView.visibility = View.VISIBLE
                 }
