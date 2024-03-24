@@ -5,16 +5,24 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bankingapp.databinding.PaymentRvItemBinding
 import com.example.bankingapp.databinding.StoryRecyclerItemBinding
 import com.example.bankingapp.presentation.model.PaymentPres
 
 
-class PaymentRecyclerAdapter: ListAdapter<PaymentPres, PaymentRecyclerAdapter.PaymentsViewHolder>(paymentDiffCallback) {
+class PaymentRecyclerAdapter :
+    ListAdapter<PaymentPres, PaymentRecyclerAdapter.PaymentsViewHolder>(paymentDiffCallback) {
 
     var itemOnClick: ((String) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaymentsViewHolder {
-        return PaymentsViewHolder(StoryRecyclerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return PaymentsViewHolder(
+            PaymentRvItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: PaymentsViewHolder, position: Int) {
@@ -23,19 +31,20 @@ class PaymentRecyclerAdapter: ListAdapter<PaymentPres, PaymentRecyclerAdapter.Pa
 
     }
 
-    fun setData(payments:List<PaymentPres>){
+    fun setData(payments: List<PaymentPres>) {
         submitList(payments)
     }
 
-    inner class PaymentsViewHolder(private val binding: StoryRecyclerItemBinding) :
+    inner class PaymentsViewHolder(private val binding: PaymentRvItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind() {
             val payment = currentList[adapterPosition]
             with(binding) {
-                tvTitle.text = payment.name
+                tvName.text = payment.name
             }
         }
-        fun listener()= with(binding){
+
+        fun listener() = with(binding) {
             root.setOnClickListener {
                 itemOnClick!!.invoke(currentList[adapterPosition].name)
             }

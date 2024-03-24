@@ -1,12 +1,14 @@
 package com.example.bankingapp.presentation.screen.transactions.payment
 
 import android.util.Log
+import android.util.Log.d
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bankingapp.databinding.FragmentPaymentBinding
@@ -23,20 +25,21 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class PaymentFragment : BaseFragment<FragmentPaymentBinding>(FragmentPaymentBinding::inflate) {
-
-
     private val paymentRecyclerAdapter = PaymentRecyclerAdapter()
     private val viewModel: PaymentFragmentViewModel by viewModels()
 
     override fun setUp() {
         setupPaymentRV()
         viewModel.onEvent(PaymentFragmentEvents.GetPayments)
-
     }
 
-    override fun listeners() {
+    override fun listeners()= with(binding) {
         paymentRecyclerAdapter.itemOnClick = {
 
+        }
+
+        btnBack.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 
@@ -53,6 +56,7 @@ class PaymentFragment : BaseFragment<FragmentPaymentBinding>(FragmentPaymentBind
     private fun handleState(state: PaymentState) {
         state.payments?.let {
             paymentRecyclerAdapter.setData(it)
+            d("check list", it.toString())
         }
         state.error?.let {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()

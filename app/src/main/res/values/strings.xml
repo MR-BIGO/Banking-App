@@ -46,4 +46,9 @@
     <string name="symbol_usd">\u0024</string>
     <string name="symbol_eur">\u20AC</string>
     <string name="card_details_fragment">card details fragment</string>
+    <string name="add_funds">Add funds</string>
+    <string name="transfer_to_someone_else_line_break">Transfer to\n someone else</string>
+    <string name="transfer_to_own_account_line_break">Transfer to\n own account</string>
+    <string name="card_details">Card Details</string>
+    <string name="delete_card">Delete Card</string>
 </resources>
