@@ -54,4 +54,6 @@
     <string name="card_N">Card Number:</string>
     <string name="expiration">Expiration Date:</string>
     <string name="cvcc">CVC:</string>
+    <string name="add_desired_funds">Add Desired Funds</string>
+    <string name="fill_funds">Fill Funds</string>
 </resources>

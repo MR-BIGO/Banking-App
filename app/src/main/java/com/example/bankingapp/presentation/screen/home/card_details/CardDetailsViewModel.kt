@@ -26,7 +26,7 @@ class CardDetailsViewModel @Inject constructor(
     ViewModel() {
 
     private val _cardDetailsState = MutableStateFlow(CardDetailsState())
-    val cardDetailsState = _cardDetailsState.asStateFlow()
+    val cardDetailsState: SharedFlow<CardDetailsState> = _cardDetailsState.asStateFlow()
 
     private val _uiEvent = MutableSharedFlow<DetailsNavigationEvent>()
     val uiEvent: SharedFlow<DetailsNavigationEvent> get() = _uiEvent

@@ -26,6 +26,8 @@ class CardsRecyclerViewAdapter :
             tvAmountEur.text = card.amountEUR.toString().plus(" ")
                 .plus(root.resources.getString(R.string.symbol_eur))
 
+            tvLastFour.text = "**** ".plus(card.cardNum.takeLast(4))
+
             when (card.cardNum.first()) {
                 '4' -> {
                     ivPaymentCorp.setImageDrawable(
@@ -59,7 +61,7 @@ class CardsRecyclerViewAdapter :
             }
         }
 
-        fun listener()= with(binding){
+        fun listener() = with(binding) {
             root.setOnClickListener {
                 itemOnClick!!.invoke(currentList[adapterPosition].id)
             }
