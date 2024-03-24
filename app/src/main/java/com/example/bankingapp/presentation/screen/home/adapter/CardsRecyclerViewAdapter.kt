@@ -47,7 +47,15 @@ class CardsRecyclerViewAdapter :
                     )
                 }
 
-                else -> {}
+                else -> {
+                    ivPaymentCorp.setImageDrawable(
+                        ResourcesCompat.getDrawable(
+                            root.resources,
+                            R.drawable.ic_paypal,
+                            root.resources.newTheme()
+                        )
+                    )
+                }
             }
         }
 

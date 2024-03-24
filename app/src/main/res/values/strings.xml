@@ -25,7 +25,7 @@
     <string name="financial_manager">financial Manager</string>
     <string name="transactions">Transactions</string>
     <string name="no_account">Don\'t have an account yet? <u>Click here!</u></string>
-    <string name="already_account">Already have an account? Click here!</string>
+    <string name="already_account">Already have an account? <u>Click here!</u></string>
     <string name="payment">Payment</string>
     <string name="transfer_to_own_account">Transfer to own account</string>
     <string name="transfer_to_someone_else">Transfer to someone else</string>
@@ -51,4 +51,7 @@
     <string name="transfer_to_own_account_line_break">Transfer to\n own account</string>
     <string name="card_details">Card Details</string>
     <string name="delete_card">Delete Card</string>
+    <string name="card_N">Card Number:</string>
+    <string name="expiration">Expiration Date:</string>
+    <string name="cvcc">CVC:</string>
 </resources>
