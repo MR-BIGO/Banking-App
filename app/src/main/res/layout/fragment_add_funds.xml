@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/DarkGrey"
     tools:context=".presentation.screen.home.card_details.add_funds.AddFundsFragment">
 
     <ProgressBar
@@ -32,7 +33,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:text="@string/add_desired_funds"
         android:textColor="@color/currency_primary_white"
         android:textSize="20sp"
@@ -150,7 +151,7 @@
         android:layout_marginTop="80dp"
         android:layout_marginEnd="40dp"
         android:hint="@string/add_funds"
-        android:textColorHint="@color/eden"
+        android:textColorHint="@color/currency_secondary_white"
         app:boxStrokeColor="@color/yellow"
         app:boxStrokeWidth="2dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -165,7 +166,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:singleLine="true"
-            android:textColor="@color/eden"
+            android:textColor="@color/aquahaze"
             android:textColorHint="@color/eden" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -178,7 +179,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         android:hint="@string/add_funds"
-        android:textColorHint="@color/eden"
+        android:textColorHint="@color/currency_secondary_white"
         app:boxStrokeColor="@color/yellow"
         app:boxStrokeWidth="2dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -193,7 +194,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:singleLine="true"
-            android:textColor="@color/eden"
+            android:textColor="@color/aquahaze"
             android:textColorHint="@color/eden" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -206,7 +207,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         android:hint="@string/add_funds"
-        android:textColorHint="@color/eden"
+        android:textColorHint="@color/currency_secondary_white"
         app:boxStrokeColor="@color/yellow"
         app:boxStrokeWidth="2dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -221,7 +222,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:singleLine="true"
-            android:textColor="@color/eden"
+            android:textColor="@color/aquahaze"
             android:textColorHint="@color/eden" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -238,5 +239,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fundsEuroInputLayout" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/moon_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
