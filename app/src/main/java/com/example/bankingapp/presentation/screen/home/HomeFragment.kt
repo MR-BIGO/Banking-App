@@ -15,7 +15,7 @@ import com.example.bankingapp.presentation.base.BaseFragment
 import com.example.bankingapp.presentation.event.HomeFragmentEvents
 import com.example.bankingapp.presentation.screen.home.adapter.CardsRecyclerViewAdapter
 import com.example.bankingapp.presentation.screen.home.adapter.StoriesRecyclerViewAdapter
-import com.example.bankingapp.presentation.state.HomeState
+import com.example.bankingapp.presentation.state.home.HomeState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

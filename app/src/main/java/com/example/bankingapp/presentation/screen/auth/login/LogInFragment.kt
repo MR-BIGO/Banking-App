@@ -60,13 +60,13 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
     }
 
     private fun disable() = with(binding) {
-        emailEditText.isClickable = false
-        passwordEditText.isClickable = false
+        emailEditText.isEnabled = false
+        passwordEditText.isEnabled = false
     }
 
     private fun enable() = with(binding) {
-        emailEditText.isClickable = true
-        passwordEditText.isClickable = true
+        emailEditText.isEnabled = true
+        passwordEditText.isEnabled = true
     }
 
     private fun resultListener() = with(binding) {

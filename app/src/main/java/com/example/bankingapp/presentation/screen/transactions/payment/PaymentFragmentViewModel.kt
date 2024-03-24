@@ -6,9 +6,11 @@ import com.example.bankingapp.data.common.Resource
 import com.example.bankingapp.domain.use_case.GetPaymentsUseCase
 import com.example.bankingapp.presentation.event.PaymentFragmentEvents
 import com.example.bankingapp.presentation.mapper.toPresentation
-import com.example.bankingapp.presentation.state.PaymentState
+import com.example.bankingapp.presentation.state.transaction.PaymentState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -22,6 +24,9 @@ class PaymentFragmentViewModel @Inject constructor(
 
     private val _paymentState = MutableStateFlow(PaymentState())
     val paymentState: StateFlow<PaymentState> = _paymentState.asStateFlow()
+
+    private val _uiEvent = MutableSharedFlow<PaymentsNavigationEvents>()
+    val uiEvent: SharedFlow<PaymentsNavigationEvents> get() = _uiEvent
 
 
     fun onEvent(event: PaymentFragmentEvents) {
@@ -58,8 +63,9 @@ class PaymentFragmentViewModel @Inject constructor(
                 }
             }
         }
-
     }
 
-
+    sealed class PaymentsNavigationEvents {
+        data class NavigateToMerchantPayment(val name: String) : PaymentsNavigationEvents()
+    }
 }

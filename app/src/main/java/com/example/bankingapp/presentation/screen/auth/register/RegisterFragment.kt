@@ -65,15 +65,15 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
     }
 
     private fun disable() = with(binding) {
-        emailEditText.isClickable = false
-        passwordEditText.isClickable = false
-        confirmPasswordEditText.isClickable = false
+        emailEditText.isEnabled = false
+        passwordEditText.isEnabled = false
+        confirmPasswordEditText.isEnabled = false
     }
 
     private fun enable() = with(binding) {
-        emailEditText.isClickable = true
-        passwordEditText.isClickable = true
-        confirmPasswordEditText.isClickable = true
+        emailEditText.isEnabled = true
+        passwordEditText.isEnabled = true
+        confirmPasswordEditText.isEnabled = true
     }
 
     override fun observers() {

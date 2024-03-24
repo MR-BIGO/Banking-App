@@ -1,4 +1,4 @@
-package com.example.bankingapp.presentation.state
+package com.example.bankingapp.presentation.state.home
 
 data class NewCardState(
     val successMessage: String? = null,

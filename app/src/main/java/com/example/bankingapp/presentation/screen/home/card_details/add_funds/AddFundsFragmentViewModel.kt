@@ -8,7 +8,7 @@ import com.example.bankingapp.domain.use_case.card_oriented.UpdateCardUseCase
 import com.example.bankingapp.presentation.event.card.add_funds.AddFundsEvents
 import com.example.bankingapp.presentation.mapper.toDomain
 import com.example.bankingapp.presentation.mapper.toPres
-import com.example.bankingapp.presentation.state.AddFundsState
+import com.example.bankingapp.presentation.state.home.AddFundsState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow

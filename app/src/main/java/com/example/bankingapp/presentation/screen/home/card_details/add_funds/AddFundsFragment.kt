@@ -12,7 +12,7 @@ import com.example.bankingapp.R
 import com.example.bankingapp.databinding.FragmentAddFundsBinding
 import com.example.bankingapp.presentation.base.BaseFragment
 import com.example.bankingapp.presentation.event.card.add_funds.AddFundsEvents
-import com.example.bankingapp.presentation.state.AddFundsState
+import com.example.bankingapp.presentation.state.home.AddFundsState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -94,7 +94,25 @@ class AddFundsFragment : BaseFragment<FragmentAddFundsBinding>(FragmentAddFundsB
             viewModel.onEvent(AddFundsEvents.ResetSuccess)
         }
 
-        progressBar.visibility = if (state.loading) View.VISIBLE else View.GONE
+        if (state.loading){
+            progressBar.visibility = View.VISIBLE
+            disable()
+        }else{
+            progressBar.visibility = View.GONE
+            enable()
+        }
+    }
+
+    private fun disable() = with(binding) {
+        fundsGelEditText.isEnabled = false
+        fundsUsdEditText.isEnabled = false
+        fundsEuroEditText.isEnabled = false
+    }
+
+    private fun enable() = with(binding) {
+        fundsGelEditText.isEnabled = true
+        fundsUsdEditText.isEnabled = true
+        fundsEuroEditText.isEnabled = true
     }
 
     private fun validator(): Boolean = with(binding) {
