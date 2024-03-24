@@ -32,7 +32,7 @@ class PayToMerchantFragment :
 
     override fun setUp() {
         binding.tvMerchantName.text = args.name
-        service = NotificationService(requireContext(), args.name)
+        service = NotificationService(requireContext())
     }
 
     override fun listeners() = with(binding) {
@@ -134,7 +134,7 @@ class PayToMerchantFragment :
         }
 
         if (state.successTransaction && state.successCard) {
-            service.showNotification()
+            service.showNotification(args.name)
             findNavController().popBackStack()
         }
 
