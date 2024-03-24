@@ -1,4 +1,4 @@
-package com.example.bankingapp.presentation.state
+package com.example.bankingapp.presentation.state.home
 
 import com.example.bankingapp.presentation.model.CardPres
 import com.example.bankingapp.presentation.model.StoryPres

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bankingapp.R
 import com.example.bankingapp.databinding.PaymentRvItemBinding
 import com.example.bankingapp.databinding.StoryRecyclerItemBinding
 import com.example.bankingapp.presentation.model.PaymentPres
@@ -37,10 +38,26 @@ class PaymentRecyclerAdapter :
 
     inner class PaymentsViewHolder(private val binding: PaymentRvItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind() {
+        fun bind() = with(binding) {
             val payment = currentList[adapterPosition]
-            with(binding) {
-                tvName.text = payment.name
+
+            tvName.text = payment.name
+            when (payment.type) {
+                PaymentPres.CategoryType.University -> {
+                    ivSection.setBackgroundResource(R.drawable.ic_university)
+                }
+
+                PaymentPres.CategoryType.Delivery -> {
+                    ivSection.setBackgroundResource(R.drawable.ic_delivry)
+                }
+
+                PaymentPres.CategoryType.Utilities -> {
+                    ivSection.setBackgroundResource(R.drawable.ic_utilities)
+                }
+
+                PaymentPres.CategoryType.bet -> {
+                    ivSection.setBackgroundResource(R.drawable.ic_bet)
+                }
             }
         }
 

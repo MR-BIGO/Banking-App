@@ -1,6 +1,5 @@
 package com.example.bankingapp.data.repository.remote
 
-import android.util.Log.d
 import com.example.bankingapp.data.common.Resource
 import com.example.bankingapp.data.remote.mapper.toDomain
 import com.example.bankingapp.data.remote.model.CardDto

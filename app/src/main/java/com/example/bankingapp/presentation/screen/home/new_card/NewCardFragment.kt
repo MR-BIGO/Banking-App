@@ -1,6 +1,5 @@
 package com.example.bankingapp.presentation.screen.home.new_card
 
-import android.util.Log.d
 import android.view.View
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
@@ -11,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.bankingapp.databinding.FragmentNewCardBinding
 import com.example.bankingapp.presentation.base.BaseFragment
 import com.example.bankingapp.presentation.event.card.new_card.NewCardEvents
-import com.example.bankingapp.presentation.state.NewCardState
+import com.example.bankingapp.presentation.state.home.NewCardState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -55,14 +54,30 @@ class NewCardFragment : BaseFragment<FragmentNewCardBinding>(FragmentNewCardBind
 
     private fun handleState(state: NewCardState)= with(binding){
         state.error?.let {
-            d("checking database result", it)
         }
         state.successMessage?.let {
-            d("checking database result", it)
             returnToHome()
         }
 
-        progressBar.visibility = if (state.loading) View.VISIBLE else View.GONE
+        if (state.loading){
+            progressBar.visibility = View.VISIBLE
+            disable()
+        }else{
+            progressBar.visibility = View.GONE
+            enable()
+        }
+    }
+
+    private fun disable() = with(binding) {
+        cardNumberEditText.isEnabled = false
+        cardDateEditText.isEnabled = false
+        cardCvvEditText.isEnabled = false
+    }
+
+    private fun enable() = with(binding) {
+        cardNumberEditText.isEnabled = true
+        cardDateEditText.isEnabled = true
+        cardCvvEditText.isEnabled = true
     }
 
     private fun returnToHome(){
