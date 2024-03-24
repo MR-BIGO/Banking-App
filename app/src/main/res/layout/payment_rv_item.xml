@@ -23,7 +23,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginStart="24dp"
         android:text="jumbera"
-        android:textColor="@color/yellow"
+        android:textColor="@color/aquahaze"
         android:textSize="18sp" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

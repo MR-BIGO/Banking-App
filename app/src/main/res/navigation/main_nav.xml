@@ -18,10 +18,10 @@
             app:destination="@id/cardDetailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/financialManagerFragment"
-        android:name="com.example.bankingapp.presentation.screen.financial_manager.FinancialManagerFragment"
+        android:id="@+id/profileFragment"
+        android:name="com.example.bankingapp.presentation.screen.profile.ProfileFragment"
         android:label="fragment_financial_manager"
-        tools:layout="@layout/fragment_financial_manager" />
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/transactionsFragment"
         android:name="com.example.bankingapp.presentation.screen.transactions.TransactionsFragment"

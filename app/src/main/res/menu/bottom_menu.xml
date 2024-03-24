@@ -10,7 +10,7 @@
         android:icon="@drawable/ic_exchange"
         android:title="@string/transactions" />
     <item
-        android:id="@+id/financialManagerFragment"
-        android:icon="@drawable/ic_statistics"
-        android:title="@string/financial_manager" />
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_person_settings"
+        android:title="@string/profile" />
 </menu>
