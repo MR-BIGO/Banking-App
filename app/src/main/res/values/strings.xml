@@ -56,4 +56,9 @@
     <string name="cvcc">CVC:</string>
     <string name="add_desired_funds">Add Desired Funds</string>
     <string name="fill_funds">Fill Funds</string>
+    <string name="make_a_payment">Make a Payment</string>
+    <string name="choose_your_card">Choose your card</string>
+    <string name="paying_to">Paying To</string>
+    <string name="choose_card">Choose Card</string>
+    <string name="funds">Funds</string>
 </resources>
