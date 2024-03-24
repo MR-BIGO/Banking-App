@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface ITransactionsRepository {
 
     suspend fun getTransactions(): Flow<Resource<List<TransactionDomain>>>
-    suspend fun saveTransaction(transaction: TransactionDomain)
+    suspend fun saveTransaction(transaction: TransactionDomain): Flow<Resource<Boolean>>
 }

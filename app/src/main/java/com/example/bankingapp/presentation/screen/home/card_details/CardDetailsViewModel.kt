@@ -8,7 +8,7 @@ import com.example.bankingapp.domain.use_case.card_oriented.DeleteCardUseCase
 import com.example.bankingapp.domain.use_case.card_oriented.GetCardByIdUseCase
 import com.example.bankingapp.presentation.event.card.details_card.CardDetailsEvents
 import com.example.bankingapp.presentation.mapper.toPres
-import com.example.bankingapp.presentation.state.CardDetailsState
+import com.example.bankingapp.presentation.state.home.CardDetailsState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

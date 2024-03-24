@@ -1,8 +1,8 @@
-package com.example.bankingapp.domain.model
+package com.example.bankingapp.data.remote.model
 
 import java.util.UUID
 
-data class TransactionDomain(
+data class TransactionDto (
     val id: String,
     val merchant: String,
     val amount: Double,

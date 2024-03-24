@@ -13,7 +13,7 @@ import com.example.bankingapp.R
 import com.example.bankingapp.databinding.FragmentCardDetailsBinding
 import com.example.bankingapp.presentation.base.BaseFragment
 import com.example.bankingapp.presentation.event.card.details_card.CardDetailsEvents
-import com.example.bankingapp.presentation.state.CardDetailsState
+import com.example.bankingapp.presentation.state.home.CardDetailsState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
