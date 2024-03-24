@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/DarkGrey"
     tools:context=".presentation.screen.home.new_card.NewCardFragment">
 
     <ProgressBar
@@ -21,10 +22,10 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:tint="@color/white"
+        android:layout_marginTop="28dp"
         android:background="@null"
         android:src="@drawable/ic_back"
+        android:tint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,9 +33,9 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="125dp"
         android:text="@string/enter_card_details"
-        android:textColor="@color/white"
+        android:textColor="@color/aquahaze"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +51,7 @@
         android:layout_marginTop="80dp"
         android:layout_marginEnd="40dp"
         android:hint="@string/card_number"
-        android:textColorHint="@color/eden"
+        android:textColorHint="@color/currency_secondary_white"
         app:boxStrokeColor="@color/yellow"
         app:boxStrokeWidth="2dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,8 +66,8 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:singleLine="true"
-            android:textColor="@color/eden"
-            android:textColorHint="@color/eden" />
+            android:textColor="@color/aquahaze"
+            android:textColorHint="@color/currency_secondary_white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -76,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:hint="@string/expiration_date"
-        android:textColorHint="@color/eden"
+        android:textColorHint="@color/currency_secondary_white"
         app:boxStrokeColor="@color/yellow"
         app:boxStrokeWidth="2dp"
         app:layout_constraintStart_toStartOf="@id/cardNumberInputLayout"
@@ -90,8 +91,8 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:singleLine="true"
-            android:textColor="@color/eden"
-            android:textColorHint="@color/eden" />
+            android:textColor="@color/aquahaze"
+            android:textColorHint="@color/currency_secondary_white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -101,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:hint="@string/cvc"
-        android:textColorHint="@color/eden"
+        android:textColorHint="@color/currency_secondary_white"
         app:boxStrokeColor="@color/yellow"
         app:boxStrokeWidth="2dp"
         app:layout_constraintEnd_toEndOf="@id/cardNumberInputLayout"
@@ -115,7 +116,7 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:singleLine="true"
-            android:textColor="@color/eden"
+            android:textColor="@color/aquahaze"
             android:textColorHint="@color/eden" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -126,11 +127,20 @@
         android:layout_marginTop="100dp"
         android:background="@drawable/shape_btn_bg"
         android:text="@string/add_card"
+        android:textColor="@color/aquahaze"
         android:textAllCaps="false"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardDateInputLayout" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/moon_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

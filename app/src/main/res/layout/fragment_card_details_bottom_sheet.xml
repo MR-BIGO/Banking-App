@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTitle"
@@ -10,18 +10,34 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="@string/card_details"
-        android:textColor="@color/white"
+        android:textColor="@color/aquahaze"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:drawablePadding="8dp"
+        android:drawableStart="@drawable/ic_card"
+        android:drawableTint="@color/yellow"
+        android:text="@string/card_N"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCardNum"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvCardNum" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCardNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="9dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/background_currency_section"
         android:paddingStart="10dp"
@@ -31,43 +47,78 @@
         android:text="544324543"
         android:textColor="@color/currency_primary_white"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@id/tvCvv"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/appCompatTextView"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="35dp"
+        android:drawablePadding="8dp"
+
+        android:drawableStart="@drawable/ic_date"
+        android:drawableTint="@color/yellow"
+        android:text="@string/expiration"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvValidDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="8dp"
         android:background="@drawable/background_currency_section"
         android:paddingStart="10dp"
         android:paddingTop="4dp"
         android:paddingEnd="10dp"
         android:paddingBottom="4dp"
-        android:text="544324543"
+        android:text="5543"
         android:textColor="@color/currency_primary_white"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvCardNum" />
+        app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView2"
+        app:layout_constraintStart_toEndOf="@+id/appCompatTextView2"
+        app:layout_constraintTop_toTopOf="@+id/appCompatTextView2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="35dp"
+        android:drawableStart="@drawable/ic_cvc"
+        android:drawableTint="@color/yellow"
+        android:text="@string/cvcc"
+        android:drawablePadding="8dp"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvValidDate"
+        app:layout_constraintTop_toBottomOf="@+id/tvCardNum" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCvv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="8dp"
         android:background="@drawable/background_currency_section"
         android:paddingStart="10dp"
         android:paddingTop="4dp"
+        android:layout_marginBottom="5dp"
         android:paddingEnd="10dp"
         android:paddingBottom="4dp"
-        android:text="544324543"
+        android:text="543"
         android:textColor="@color/currency_primary_white"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@id/tvValidDate"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintTop_toBottomOf="@id/tvCardNum" />
+        app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView3"
+        app:layout_constraintStart_toEndOf="@+id/appCompatTextView3"
+        app:layout_constraintTop_toTopOf="@+id/appCompatTextView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
