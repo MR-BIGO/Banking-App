@@ -61,4 +61,7 @@
     <string name="paying_to">Paying To</string>
     <string name="choose_card">Choose Card</string>
     <string name="funds">Funds</string>
+    <string name="make_a_transfer">Make a Transfer</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
 </resources>
