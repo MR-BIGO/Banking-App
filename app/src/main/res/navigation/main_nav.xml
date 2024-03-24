@@ -80,6 +80,9 @@
         <action
             android:id="@+id/action_cardDetailsFragment_to_cardDetailsDialogFragment"
             app:destination="@id/cardDetailsDialogFragment" />
+        <action
+            android:id="@+id/action_cardDetailsFragment_to_addFundsFragment"
+            app:destination="@id/addFundsFragment" />
     </fragment>
     <fragment
         android:id="@+id/payToMerchantFragment"
@@ -104,4 +107,13 @@
             android:name="cvv"
             app:argType="string" />
     </dialog>
+    <fragment
+        android:id="@+id/addFundsFragment"
+        android:name="com.example.bankingapp.presentation.screen.home.card_details.add_funds.AddFundsFragment"
+        android:label="fragment_add_funds"
+        tools:layout="@layout/fragment_add_funds" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
 </navigation>

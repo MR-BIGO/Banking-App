@@ -22,6 +22,7 @@
         android:layout_height="32dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:tint="@color/white"
         android:background="@null"
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="@string/enter_card_details"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
         app:startIconDrawable="@drawable/ic_card"
-        app:startIconTint="@color/black">
+        app:startIconTint="@color/yellow">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/cardNumberEditText"
@@ -80,8 +81,8 @@
         app:boxStrokeWidth="2dp"
         app:layout_constraintStart_toStartOf="@id/cardNumberInputLayout"
         app:layout_constraintTop_toBottomOf="@+id/cardNumberInputLayout"
-        app:startIconDrawable="@drawable/ic_card"
-        app:startIconTint="@color/black">
+        app:startIconDrawable="@drawable/ic_date"
+        app:startIconTint="@color/yellow">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/cardDateEditText"
@@ -105,8 +106,8 @@
         app:boxStrokeWidth="2dp"
         app:layout_constraintEnd_toEndOf="@id/cardNumberInputLayout"
         app:layout_constraintTop_toBottomOf="@id/cardNumberInputLayout"
-        app:startIconDrawable="@drawable/ic_card"
-        app:startIconTint="@color/black">
+        app:startIconDrawable="@drawable/ic_cvc"
+        app:startIconTint="@color/yellow">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/cardCvvEditText"
