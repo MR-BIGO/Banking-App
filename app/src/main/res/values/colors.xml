@@ -16,4 +16,6 @@
     <color name="background_grey">#141414</color>
     <color name="background_choices">#271a14</color>
     <color name="orange">#e85f11</color>
+    <color name="red">#FFD32F2F</color>
+    <color name="dark_red">#FFB71C1C</color>
 </resources>

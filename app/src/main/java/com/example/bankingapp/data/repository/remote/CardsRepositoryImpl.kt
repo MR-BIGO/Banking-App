@@ -1,5 +1,6 @@
 package com.example.bankingapp.data.repository.remote
 
+import android.util.Log.d
 import com.example.bankingapp.data.common.Resource
 import com.example.bankingapp.data.remote.mapper.toDomain
 import com.example.bankingapp.data.remote.model.CardDto
@@ -53,24 +54,20 @@ class CardsRepositoryImpl @Inject constructor(
         return flow {
             emit(Resource.Loading(true))
             try {
-                var cardById: CardDomain? = null
                 val dataSnapshot: DataSnapshot = withContext(Dispatchers.IO) {
                     database.child(id).get().await()
                 }
-                for (i in dataSnapshot.children) {
-                    val cardDtoData = CardDto(
-                        i.getValue(CardDto::class.java)!!.amountEUR,
-                        i.getValue(CardDto::class.java)!!.amountGEL,
-                        i.getValue(CardDto::class.java)!!.amountUSD,
-                        i.getValue(CardDto::class.java)!!.cardNum,
-                        i.getValue(CardDto::class.java)!!.cvv,
-                        i.getValue(CardDto::class.java)!!.id,
-                        i.getValue(CardDto::class.java)!!.validDate,
-                    )
-                    cardById = cardDtoData.toDomain()
-                }
-                emit(Resource.Success(cardById!!))
-            }catch (e: Throwable){
+                val cardDtoData = CardDto(
+                    dataSnapshot.getValue(CardDto::class.java)!!.amountEUR,
+                    dataSnapshot.getValue(CardDto::class.java)!!.amountGEL,
+                    dataSnapshot.getValue(CardDto::class.java)!!.amountUSD,
+                    dataSnapshot.getValue(CardDto::class.java)!!.cardNum,
+                    dataSnapshot.getValue(CardDto::class.java)!!.cvv,
+                    dataSnapshot.getValue(CardDto::class.java)!!.id,
+                    dataSnapshot.getValue(CardDto::class.java)!!.validDate,
+                )
+                emit(Resource.Success(cardDtoData.toDomain()))
+            } catch (e: Throwable) {
                 emit(Resource.Error(e.message ?: ""))
             }
             emit(Resource.Loading(false))
@@ -97,9 +94,16 @@ class CardsRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun deleteCard(id: Int): Flow<Resource<String>> {
+    override fun deleteCard(id: String): Flow<Resource<Boolean>> {
         return flow {
-
+            emit(Resource.Loading(true))
+            try {
+                database.child(id).removeValue()
+                emit(Resource.Success(true))
+            } catch (e: Throwable) {
+                emit(Resource.Error(e.message ?: ""))
+            }
+            emit(Resource.Loading(false))
         }
     }
 }
