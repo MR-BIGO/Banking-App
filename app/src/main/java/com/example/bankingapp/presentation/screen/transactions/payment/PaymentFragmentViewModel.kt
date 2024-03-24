@@ -32,7 +32,10 @@ class PaymentFragmentViewModel @Inject constructor(
     fun onEvent(event: PaymentFragmentEvents) {
         when (event) {
             is PaymentFragmentEvents.GetPayments -> getPayments()
-            is PaymentFragmentEvents.PaymentPressed -> {}
+            is PaymentFragmentEvents.PaymentPressed -> {
+                emitNavigationEvent(PaymentsNavigationEvents.NavigateToMerchantPayment(event.name))
+            }
+
             is PaymentFragmentEvents.ResetError -> setError(null)
         }
     }
@@ -62,6 +65,12 @@ class PaymentFragmentViewModel @Inject constructor(
                     }
                 }
             }
+        }
+    }
+
+    private fun emitNavigationEvent(event: PaymentsNavigationEvents) {
+        viewModelScope.launch {
+            _uiEvent.emit(event)
         }
     }
 
