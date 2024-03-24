@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:paddingEnd="30dp"
+    android:layout_height="wrap_content"
     android:paddingStart="0dp"
-    android:layout_height="wrap_content">
+    android:paddingEnd="30dp">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvAmountGel"
@@ -98,6 +98,16 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/tvCardTotal"
                 app:layout_constraintTop_toBottomOf="@id/tvCardTotal" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvLastFour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="fdsfs"
+                android:textColor="@color/currency_primary_white"
+                app:layout_constraintStart_toStartOf="@id/tvCardTotalAmount"
+                app:layout_constraintTop_toBottomOf="@id/tvCardTotalAmount" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivPaymentCorp"
