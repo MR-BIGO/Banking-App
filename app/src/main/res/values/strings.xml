@@ -64,4 +64,8 @@
     <string name="make_a_transfer">Make a Transfer</string>
     <string name="from">From</string>
     <string name="to">To</string>
+    <string name="enter_id_number">Enter Id Number</string>
+    <string name="enter_personal_id_number">Enter Personal Id Number</string>
+    <string name="cardholder">CARDHOLDER</string>
+    <string name="man_manson">Man Manson</string>
 </resources>

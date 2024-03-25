@@ -142,6 +142,12 @@ class PayToMerchantFragment :
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             viewModel.onEvent(PayMerchantEvents.ResetError)
         }
+
+        if (state.chosenCard == null){
+            disable()
+        }else{
+            enable()
+        }
     }
 
     private fun disable() {
