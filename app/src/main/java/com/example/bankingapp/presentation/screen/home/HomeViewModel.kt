@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.bankingapp.data.common.Resource
 import com.example.bankingapp.domain.use_case.GetStoriesUseCase
 import com.example.bankingapp.domain.use_case.card_oriented.GetCardsUseCase
+import com.example.bankingapp.domain.use_case.transaction.GetTransactionsUseCase
 import com.example.bankingapp.presentation.event.HomeFragmentEvents
 import com.example.bankingapp.presentation.mapper.toPres
 import com.example.bankingapp.presentation.mapper.toPresentation
@@ -22,7 +23,8 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val getStoriesUseCase: GetStoriesUseCase,
-    private val getCardsUseCase: GetCardsUseCase
+    private val getCardsUseCase: GetCardsUseCase,
+    private val getTransactionsUseCase: GetTransactionsUseCase
 ) : ViewModel() {
 
     private val _homeState = MutableStateFlow(HomeState())
@@ -47,6 +49,9 @@ class HomeViewModel @Inject constructor(
                 handleCardPress(event.id)
             }
 
+            HomeFragmentEvents.GetTransactions -> {
+                getTransactions()
+            }
         }
     }
 
@@ -98,13 +103,33 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun handleCardPress(id: String){
+    private fun getTransactions() {
+        viewModelScope.launch {
+            getTransactionsUseCase().collect {
+                when (it) {
+                    is Resource.Error -> {
+                        setError(it.error)
+                    }
+
+                    is Resource.Loading -> {
+                        setLoading(it.loading)
+                    }
+
+                    is Resource.Success -> {
+                        _homeState.update { currentState -> currentState.copy(transactions = it.data.map { transaction -> transaction.toPres() }) }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun handleCardPress(id: String) {
         viewModelScope.launch {
             _uiEvent.emit(HomeNavigationEvents.NavigateToDetails(id))
         }
     }
 
-    sealed class HomeNavigationEvents{
-        data class NavigateToDetails(val id: String): HomeNavigationEvents()
+    sealed class HomeNavigationEvents {
+        data class NavigateToDetails(val id: String) : HomeNavigationEvents()
     }
 }

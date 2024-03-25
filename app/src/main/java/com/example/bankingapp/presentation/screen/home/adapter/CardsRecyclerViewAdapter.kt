@@ -26,6 +26,8 @@ class CardsRecyclerViewAdapter :
             tvAmountEur.text = card.amountEUR.toString().plus(" ")
                 .plus(root.resources.getString(R.string.symbol_eur))
 
+            tvCardTotalAmount.text = card.amountGEL.plus(card.amountEUR*2.8).plus(card.amountUSD*2.5).toString().plus(" ").plus(root.resources.getString(R.string.symbol_gel))
+
             tvLastFour.text = "**** ".plus(card.cardNum.takeLast(4))
 
             when (card.cardNum.first()) {

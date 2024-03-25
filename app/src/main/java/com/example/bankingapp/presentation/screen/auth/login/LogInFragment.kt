@@ -46,6 +46,9 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
             progressBar.visibility = View.GONE
             enable()
         }
+        state.errorMessage?.let {
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun handleEvent(event: LogInFragmentViewModel.LoginNavigationEvents) {
