@@ -31,18 +31,15 @@ class TransactionsRepositoryImpl @Inject constructor(
                 val dataSnapshot: DataSnapshot = withContext(Dispatchers.IO) {
                     database.get().await()
                 }
-//                for (i in dataSnapshot.children) {
-//                    val transactionDtoData = TransactionDto(
-//                        i.getValue(CardDto::class.java)!!.amountEUR,
-//                        i.getValue(CardDto::class.java)!!.amountGEL,
-//                        i.getValue(CardDto::class.java)!!.amountUSD,
-//                        i.getValue(CardDto::class.java)!!.cardNum,
-//                        i.getValue(CardDto::class.java)!!.cvv,
-//                        i.getValue(CardDto::class.java)!!.id,
-//                        i.getValue(CardDto::class.java)!!.validDate,
-//                    )
-//                    dataList.add(transactionDtoData.toDomain())
-//                }
+                for (i in dataSnapshot.children) {
+                    val transactionDtoData = TransactionDto(
+                        i.getValue(TransactionDto::class.java)!!.amount,
+                        i.getValue(TransactionDto::class.java)!!.currency,
+                        i.getValue(TransactionDto::class.java)!!.id,
+                        i.getValue(TransactionDto::class.java)!!.merchant,
+                    )
+                    dataList.add(transactionDtoData.toDomain())
+                }
                 emit(Resource.Success(dataList))
             } catch (e: Throwable) {
                 emit(Resource.Error(e.message ?: ""))

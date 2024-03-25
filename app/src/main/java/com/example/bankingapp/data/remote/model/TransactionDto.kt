@@ -1,10 +1,8 @@
 package com.example.bankingapp.data.remote.model
 
-import java.util.UUID
-
-data class TransactionDto (
-    val id: String,
-    val merchant: String,
-    val amount: Double,
-    val currency: String
+data class TransactionDto(
+    val amount: Double = 0.0,
+    val currency: String = "",
+    val id: String = "",
+    val merchant: String = "",
 )

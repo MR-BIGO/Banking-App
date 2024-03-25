@@ -15,6 +15,7 @@ import com.example.bankingapp.presentation.base.BaseFragment
 import com.example.bankingapp.presentation.event.HomeFragmentEvents
 import com.example.bankingapp.presentation.screen.home.adapter.CardsRecyclerViewAdapter
 import com.example.bankingapp.presentation.screen.home.adapter.StoriesRecyclerViewAdapter
+import com.example.bankingapp.presentation.screen.home.adapter.TransactionsRecyclerAdapter
 import com.example.bankingapp.presentation.state.home.HomeState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -24,6 +25,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private val storiesRecyclerAdapter = StoriesRecyclerViewAdapter()
     private val cardsRecyclerAdapter = CardsRecyclerViewAdapter()
+    private val transactionsRvAdapter = TransactionsRecyclerAdapter()
     private val viewModel: HomeViewModel by viewModels()
     override fun setUp() {
         with(binding.recyclerViewStories) {
@@ -32,7 +34,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
         viewModel.onEvent(HomeFragmentEvents.GetStories)
         viewModel.onEvent(HomeFragmentEvents.GetCards)
+        viewModel.onEvent(HomeFragmentEvents.GetTransactions)
         setUpCards()
+        setUpTransactions()
     }
 
     override fun listeners() = with(binding) {
@@ -76,6 +80,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
     }
 
+    private fun setUpTransactions()= with(binding){
+        recyclerTransactions.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = transactionsRvAdapter
+        }
+    }
+
     private fun handleState(state: HomeState) {
         with(state) {
             stories?.let {
@@ -84,7 +95,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             cards?.let {
                 cardsRecyclerAdapter.setData(it)
             }
-            state.error?.let {
+            transactions?.let {
+                transactionsRvAdapter.setData(it)
+                d("check error cards here", it.toString())
+            }
+            error?.let {
                 Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
                 d("check error cards here", it)
                 viewModel.onEvent(HomeFragmentEvents.ResetError)
