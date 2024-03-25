@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_cardDetailsFragment"
             app:destination="@id/cardDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_storyDetailsDialogFragment"
+            app:destination="@id/storyDetailsDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -83,6 +86,12 @@
         <action
             android:id="@+id/action_cardDetailsFragment_to_addFundsFragment"
             app:destination="@id/addFundsFragment" />
+        <action
+            android:id="@+id/action_cardDetailsFragment_to_transferToOwnAccFragment"
+            app:destination="@id/transferToOwnAccFragment" />
+        <action
+            android:id="@+id/action_cardDetailsFragment_to_transferToSomeoneElseFragment"
+            app:destination="@id/transferToSomeoneElseFragment" />
     </fragment>
     <fragment
         android:id="@+id/payToMerchantFragment"
@@ -116,4 +125,11 @@
             android:name="id"
             app:argType="string" />
     </fragment>
+    <dialog
+        android:id="@+id/storyDetailsDialogFragment"
+        android:name="com.example.bankingapp.presentation.screen.home.story_details.StoryDetailsDialogFragment"
+        android:label="StoryDetailsDialogFragment" >
+        <argument android:name="StoryDetails"
+            app:argType="com.example.bankingapp.presentation.model.StoryPres" />
+    </dialog>
 </navigation>

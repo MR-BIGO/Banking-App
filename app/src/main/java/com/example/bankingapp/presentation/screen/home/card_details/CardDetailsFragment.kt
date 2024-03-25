@@ -39,6 +39,13 @@ class CardDetailsFragment :
             viewModel.onEvent(CardDetailsEvents.ShowDetailsPressed(cardNum, validDate, cvv))
         }
 
+        ivOwn.setOnClickListener {
+            findNavController().navigate(CardDetailsFragmentDirections.actionCardDetailsFragmentToTransferToOwnAccFragment())
+        }
+        btnElse.setOnClickListener{
+            findNavController().navigate(CardDetailsFragmentDirections.actionCardDetailsFragmentToTransferToSomeoneElseFragment())
+        }
+
         btnDeleteCard.setOnClickListener {
             val builder = AlertDialog.Builder(requireContext())
             builder.setTitle("Are you sure you want to delete this card?")

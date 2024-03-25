@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bankingapp.R
 import com.example.bankingapp.databinding.PaymentRvItemBinding
-import com.example.bankingapp.databinding.StoryRecyclerItemBinding
 import com.example.bankingapp.presentation.model.PaymentPres
 
 
