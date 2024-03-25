@@ -13,12 +13,15 @@ import com.example.bankingapp.presentation.model.StoryPres
 
 class StoriesRecyclerViewAdapter: ListAdapter<StoryPres, StoriesRecyclerViewAdapter.StoriesViewHolder>(StoryDiffCallback) {
 
+    var onItemClick: (StoryPres) -> Unit = {}
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoriesViewHolder {
         return StoriesViewHolder(StoryRecyclerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: StoriesViewHolder, position: Int) {
         holder.bind()
+        holder.listener()
     }
 
     inner class StoriesViewHolder(private val binding: StoryRecyclerItemBinding) :
@@ -29,6 +32,14 @@ class StoriesRecyclerViewAdapter: ListAdapter<StoryPres, StoriesRecyclerViewAdap
                 shapeableImageViewCover.loadImage(story.picture)
                 tvTitle.text = story.title
                 tvTitle.setTextColor(Color.parseColor("#".plus(story.color)))
+                shapeableImageViewCover.setOnClickListener {
+                }
+            }
+        }
+
+        fun listener() = with(binding) {
+            root.setOnClickListener {
+                onItemClick.invoke(currentList[adapterPosition])
             }
         }
     }

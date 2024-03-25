@@ -84,8 +84,7 @@
         android:background="@color/DarkGrey"
         android:scaleType="centerInside"
         android:src="@drawable/ic_transact"
-        app:layout_constraintEnd_toStartOf="@+id/ivExchange"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivTransferToOwn"
         app:layout_constraintTop_toBottomOf="@+id/view"
         app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
@@ -103,32 +102,6 @@
         app:layout_constraintTop_toBottomOf="@+id/ivTransferToSomeoneElse" />
 
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/ivExchange"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/DarkGrey"
-        android:scaleType="center"
-        android:src="@drawable/ic_exchange"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivTransferToSomeoneElse"
-        app:layout_constraintTop_toBottomOf="@+id/view"
-        app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:gravity="center"
-        android:text="@string/exchange"
-        android:textColor="@color/aquahaze"
-        app:layout_constraintEnd_toEndOf="@+id/ivExchange"
-        app:layout_constraintStart_toStartOf="@+id/ivExchange"
-        app:layout_constraintTop_toBottomOf="@+id/ivExchange" />
-
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
@@ -143,7 +116,7 @@
         app:layout_constraintTop_toBottomOf="@id/ivPayment" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvContacts"
+        android:id="@+id/rvTransactions"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
@@ -151,7 +124,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/view2"
-        tools:listitem="@layout/contacts_rv_item" />
+        app:layout_constraintTop_toTopOf="@id/view2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

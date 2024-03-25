@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/DarkGrey"
     tools:context=".presentation.screen.transactions.to_own_acc.TransferToOwnAccFragment">
 
     <ProgressBar
@@ -206,7 +207,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="40dp"
         android:hint="@string/add_funds"
-        android:textColorHint="@color/eden"
+        android:textColorHint="@color/currency_secondary_white"
         app:boxStrokeColor="@color/yellow"
         app:boxStrokeWidth="2dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -221,8 +222,8 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:singleLine="true"
-            android:textColor="@color/eden"
-            android:textColorHint="@color/eden" />
+            android:textColor="@color/aquahaze"
+            android:textColorHint="@color/currency_secondary_white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton

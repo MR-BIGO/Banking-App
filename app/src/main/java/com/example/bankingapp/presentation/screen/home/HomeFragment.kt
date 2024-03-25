@@ -42,6 +42,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         cardsRecyclerAdapter.itemOnClick = {
             viewModel.onEvent(HomeFragmentEvents.CardPressed(it))
         }
+        storiesRecyclerAdapter.onItemClick={
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToStoryDetailsDialogFragment(
+                    it
+                )
+            )
+        }
     }
 
     override fun observers() {
@@ -98,6 +105,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             is HomeViewModel.HomeNavigationEvents.NavigateToDetails -> {
                 navigateToDetails(event.id)
             }
+
+            else -> {}
         }
     }
 }
