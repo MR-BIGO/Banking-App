@@ -1,15 +1,16 @@
-package com.example.bankingapp.presentation.screen.transactions.to_own_acc
+package com.example.bankingapp.presentation.screen.transactions.to_someone_else
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bankingapp.data.common.Resource
 import com.example.bankingapp.domain.use_case.card_oriented.UpdateCardUseCase
 import com.example.bankingapp.domain.use_case.transaction.SaveTransactionUseCase
-import com.example.bankingapp.presentation.event.transaction.TransferOwnEvents
+import com.example.bankingapp.presentation.event.transaction.TransferToElseEvents
 import com.example.bankingapp.presentation.mapper.toDomain
 import com.example.bankingapp.presentation.model.CardPres
 import com.example.bankingapp.presentation.model.TransactionPres
-import com.example.bankingapp.presentation.state.transaction.TransferToOwnState
+import com.example.bankingapp.presentation.state.transaction.TransferToElseState
+import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -19,33 +20,26 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TransferToOwnViewModel @Inject constructor(
+class TransferToElseViewModel @Inject constructor(
     private val updateCardUseCase: UpdateCardUseCase,
     private val saveTransactionUseCase: SaveTransactionUseCase
 ) : ViewModel() {
 
-    private val _transferOwnState = MutableStateFlow(TransferToOwnState())
-    val transferOwnState: StateFlow<TransferToOwnState> = _transferOwnState.asStateFlow()
+    private val _transferElseState = MutableStateFlow(TransferToElseState())
+    val transferElseState: StateFlow<TransferToElseState> = _transferElseState.asStateFlow()
 
-    fun onEvent(event: TransferOwnEvents) {
+    fun onEvent(event: TransferToElseEvents) {
         when (event) {
-            is TransferOwnEvents.ChosenCardFrom -> {
-                _transferOwnState.update { currentState -> currentState.copy(chosenCardFrom = event.card) }
-
+            is TransferToElseEvents.ChosenCardFrom -> {
+                _transferElseState.update { currentState -> currentState.copy(chosenCardFrom = event.card) }
             }
-
-            is TransferOwnEvents.ChosenCardTo -> {
-                _transferOwnState.update { currentState -> currentState.copy(chosenCardTo = event.card) }
-            }
-
-            is TransferOwnEvents.ResetError -> {
+            is TransferToElseEvents.ResetError -> {
                 setError(null)
             }
 
-            is TransferOwnEvents.TransferPressed -> {
-                handleTransferPressed(event.amount, event.currency, event.cardFrom, event.cardTo)
+            is TransferToElseEvents.TransferPressed -> {
+                handleTransferPressed(event.amount, event.currency, event.cardFrom)
             }
-
         }
     }
 
@@ -53,12 +47,11 @@ class TransferToOwnViewModel @Inject constructor(
         amount: Double,
         currency: String,
         cardFrom: CardPres,
-        cardTo: CardPres
     ) {
         viewModelScope.launch {
             saveTransactionUseCase(
                 TransactionPres(
-                    merchant = "Transfer To Own",
+                    merchant = "Transfer To Someone Else",
                     amount = amount,
                     currency = currency
                 ).toDomain()
@@ -67,7 +60,7 @@ class TransferToOwnViewModel @Inject constructor(
                     is Resource.Error -> setError(it.error)
                     is Resource.Loading -> setLoading(it.loading)
                     is Resource.Success -> {
-                        _transferOwnState.update { currentState ->
+                        _transferElseState.update { currentState ->
                             currentState.copy(
                                 successTransaction = it.data
                             )
@@ -75,29 +68,19 @@ class TransferToOwnViewModel @Inject constructor(
                     }
                 }
             }
-
             updateCardUseCase(
-                _transferOwnState.value.chosenCardFrom!!.copy(amountGEL = cardFrom.amountGEL - amount)
+                _transferElseState.value.chosenCardFrom!!.copy(amountGEL = cardFrom.amountGEL - amount)
                     .toDomain()
             ).collect {
                 when (it) {
                     is Resource.Error -> setError(it.error)
                     is Resource.Loading -> setLoading(it.loading)
                     is Resource.Success -> {
-                        _transferOwnState.update { currentState -> currentState.copy(successCardFrom = it.data) }
-                    }
-                }
-            }
-
-            updateCardUseCase(
-                _transferOwnState.value.chosenCardTo!!.copy(amountGEL = cardTo.amountGEL + amount)
-                    .toDomain()
-            ).collect {
-                when (it) {
-                    is Resource.Error -> setError(it.error)
-                    is Resource.Loading -> setLoading(it.loading)
-                    is Resource.Success -> {
-                        _transferOwnState.update { currentState -> currentState.copy(successCardTo = it.data) }
+                        _transferElseState.update { currentState ->
+                            currentState.copy(
+                                successCardFrom = it.data
+                            )
+                        }
                     }
                 }
             }
@@ -105,10 +88,10 @@ class TransferToOwnViewModel @Inject constructor(
     }
 
     private fun setError(error: String?) {
-        _transferOwnState.update { currentState -> currentState.copy(error = error) }
+        _transferElseState.update { currentState -> currentState.copy(error = error) }
     }
 
     private fun setLoading(loading: Boolean) {
-        _transferOwnState.update { currentState -> currentState.copy(loading = loading) }
+        _transferElseState.update { currentState -> currentState.copy(loading = loading) }
     }
 }

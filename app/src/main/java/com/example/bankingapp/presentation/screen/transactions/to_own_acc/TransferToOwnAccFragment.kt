@@ -11,13 +11,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.bankingapp.R
 import com.example.bankingapp.databinding.FragmentTransferToOwnAccBinding
 import com.example.bankingapp.presentation.base.BaseFragment
-import com.example.bankingapp.presentation.event.transaction.PayMerchantEvents
 import com.example.bankingapp.presentation.event.transaction.TransferOwnEvents
 import com.example.bankingapp.presentation.model.CardPres
 import com.example.bankingapp.presentation.notification.NotificationService
 import com.example.bankingapp.presentation.screen.transactions.cards_bottom_sheet.CardsBottomSheet
-import com.example.bankingapp.presentation.screen.transactions.payment.pay_to_merchant.PayToMerchantViewModel
-import com.example.bankingapp.presentation.state.transaction.PayToMerchantState
 import com.example.bankingapp.presentation.state.transaction.TransferToOwnState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -202,6 +199,12 @@ class TransferToOwnAccFragment :
         state.error?.let {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             viewModel.onEvent(TransferOwnEvents.ResetError)
+        }
+
+        if (state.chosenCardFrom == null || state.chosenCardTo == null){
+            disable()
+        }else{
+            enable()
         }
     }
 
